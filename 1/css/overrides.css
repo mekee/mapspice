@@ -1,0 +1,3 @@
+.info-bubble .content .tooltip .part-value, .info-bubble .content .annotation .part-value {
+    display: block;
+}
