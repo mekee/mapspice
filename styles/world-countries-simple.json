@@ -1,0 +1,764 @@
+{
+  "zoom": 0,
+  "center": [
+    0,
+    20
+  ],
+  "maxBounds": [
+    [
+      -180,
+      -60
+    ],
+    [
+      180,
+      80
+    ]
+  ],
+  "maxZoom": 18,
+  "style": {
+    "metadata": {
+      "mapspice:use-seamless-variable-transitions": true,
+      "mapspice:always-visible-layers-ids": [
+        "background",
+        "landmass-layer",
+        "world-boundaries",
+        "world-rivers",
+        "world-rivers-labels",
+        "world-cities-smaller",
+        "world-cities-small",
+        "world-cities-medium",
+        "world-cities-city",
+        "world-cities-major",
+        "world-cities-capital",
+        "water-labels-5",
+        "water-labels-4",
+        "water-labels-3",
+        "water-labels-2",
+        "water-labels-1",
+        "world-labels",
+        "world-labels-abbreviations",
+        "geosearch-points"
+      ],
+      "mapspice:color-palettes": {},
+      "mapspice:preferred-summary-level-id": null,
+      "mapspice:summary-levels": {},
+      "mapspice:preferred-variable-id": null,
+      "mapspice:variables": {}
+    },
+    "version": 8,
+    "sprite": "sprite/sprite",
+    "glyphs": "font/arial-regular/0-65535.pbf",
+    "transition": {
+      "duration": 600
+    },
+    "sources": {
+      "geobuffer": {
+        "type": "vector",
+        "tiles": [
+          "https://tiles3.socialexplorer.com/gettile/?x={x}&y={y}&z={z}&layers={layers}&projection=EPSG-3857&columns={columns}"
+        ],
+        "layers": [
+          {
+            "layerId": "14119",
+            "datasets": [
+              {
+                "datasetId": 0,
+                "columns": [
+                  "Geo_QName",
+                  "Geo_FIPS"
+                ]
+              }
+            ]
+          },
+          {
+            "layerId": "14119p",
+            "datasets": [
+              {
+                "datasetId": 0,
+                "columns": [
+                  "Geo_QName",
+                  "Geo_FIPS"
+                ]
+              }
+            ]
+          },
+          {
+            "layerId": "12016",
+            "datasets": [
+              {
+                "datasetId": 0,
+                "columns": [
+                  "NAME",
+                  "SCALERANK"
+                ]
+              }
+            ]
+          },
+          {
+            "layerId": "1038",
+            "datasets": [
+              {
+                "datasetId": 0,
+                "columns": [
+                  "CAPITAL"
+                ]
+              }
+            ]
+          },
+          {
+            "layerId": "10502",
+            "datasets": [
+              {
+                "datasetId": 0,
+                "columns": [
+                  "Name",
+                  "ScaleRank",
+                  "FeatureCla"
+                ]
+              }
+            ]
+          },
+          {
+            "layerId": "10315",
+            "datasets": [
+              {
+                "datasetId": 0,
+                "columns": [
+                  "NAME"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "geosearch-points": {
+        "type": "geojson",
+        "data": {
+          "type": "FeatureCollection",
+          "features": []
+        }
+      }
+    },
+    "layers": [
+      {
+        "id": "background",
+        "paint": {
+          "background-color": "rgba(255,255,255, 1)"
+        },
+        "type": "background"
+      },
+      {
+        "id": "landmass-layer",
+        "type": "fill",
+        "source": "geobuffer",
+        "source-layer": "14119",
+        "paint": {
+          "fill-color": "#E5E4E5"
+        },
+        "filter": [
+          "!=",
+          "FIPS",
+          "72"
+        ]
+      },
+      {
+        "id": "world-boundaries",
+        "type": "line",
+        "source": "geobuffer",
+        "source-layer": "14119",
+        "paint": {
+          "line-color": "rgba(0, 0, 0, 0.2)",
+          "line-width": 1,
+          "line-blur": 1
+        }
+      },
+      {
+        "id": "world-rivers",
+        "type": "line",
+        "source": "geobuffer",
+        "source-layer": "10315",
+        "paint": {
+          "line-color": "rgba(0, 0, 250, 0.3)",
+          "line-width": 1,
+          "line-blur": 1
+        }
+      },
+      {
+        "id": "world-rivers-labels",
+        "type": "symbol",
+        "source": "geobuffer",
+        "source-layer": "10315",
+        "paint": {
+          "text-color": "rgba(0, 0, 250, 0.7)",
+          "text-halo-color": "rgba(255, 255, 255, 0.8)",
+          "text-halo-width": 1,
+          "text-halo-blur": 1
+        },
+        "layout": {
+          "symbol-placement": "line",
+          "text-field": "{NAME}",
+          "text-offset": [
+            0,
+            1.1
+          ],
+          "text-size": {
+            "stops": [
+              [
+                8,
+                9
+              ],
+              [
+                22,
+                15
+              ]
+            ]
+          }
+        },
+        "minzoom": 8,
+        "maxzoom": 22
+      },
+      {
+        "id": "world-cities-smaller",
+        "type": "symbol",
+        "source": "geobuffer",
+        "source-layer": "12016",
+        "paint": {
+          "text-color": "rgba(0, 0, 0, 0.7)",
+          "text-halo-color": "rgba(255, 255, 255, 0.8)",
+          "text-halo-width": 1,
+          "icon-opacity": 0.3,
+          "text-halo-blur": 1
+        },
+        "layout": {
+          "icon-image": "small_city",
+          "text-field": "{NAME}",
+          "text-offset": [
+            0,
+            1.1
+          ],
+          "text-size": {
+            "stops": [
+              [
+                4,
+                11
+              ],
+              [
+                22,
+                20
+              ]
+            ]
+          }
+        },
+        "minzoom": 8,
+        "maxzoom": 22,
+        "filter": [
+          "all",
+          [
+            "<=",
+            "SCALERANK",
+            5
+          ],
+          [
+            ">",
+            "SCALERANK",
+            0
+          ]
+        ]
+      },
+      {
+        "id": "world-cities-small",
+        "type": "symbol",
+        "source": "geobuffer",
+        "source-layer": "12016",
+        "paint": {
+          "text-color": "rgba(0, 0, 0, 0.7)",
+          "text-halo-color": "rgba(255, 255, 255, 0.8)",
+          "text-halo-width": 1,
+          "icon-opacity": 0.6,
+          "text-halo-blur": 1
+        },
+        "layout": {
+          "icon-image": "small_city",
+          "text-field": "{NAME}",
+          "text-offset": [
+            0,
+            1.1
+          ],
+          "text-size": {
+            "stops": [
+              [
+                4,
+                11
+              ],
+              [
+                22,
+                20
+              ]
+            ]
+          }
+        },
+        "minzoom": 7.5,
+        "maxzoom": 22,
+        "filter": [
+          "all",
+          [
+            "<=",
+            "SCALERANK",
+            7
+          ],
+          [
+            ">",
+            "SCALERANK",
+            5
+          ]
+        ]
+      },
+      {
+        "id": "world-cities-medium",
+        "type": "symbol",
+        "source": "geobuffer",
+        "source-layer": "12016",
+        "paint": {
+          "text-color": "rgba(0, 0, 0, 0.7)",
+          "text-halo-color": "rgba(255, 255, 255, 0.8)",
+          "text-halo-width": 1,
+          "icon-opacity": 0.5,
+          "text-halo-blur": 1
+        },
+        "layout": {
+          "icon-image": "medium_city",
+          "text-field": "{NAME}",
+          "text-offset": [
+            0,
+            1.1
+          ],
+          "text-size": {
+            "stops": [
+              [
+                4,
+                11
+              ],
+              [
+                22,
+                20
+              ]
+            ]
+          }
+        },
+        "minzoom": 5,
+        "maxzoom": 22,
+        "filter": [
+          "all",
+          [
+            "<=",
+            "SCALERANK",
+            8
+          ],
+          [
+            ">",
+            "SCALERANK",
+            7
+          ]
+        ]
+      },
+      {
+        "id": "world-cities-city",
+        "type": "symbol",
+        "source": "geobuffer",
+        "source-layer": "12016",
+        "paint": {
+          "text-color": "rgba(0, 0, 0, 0.7)",
+          "text-halo-color": "rgba(255, 255, 255, 0.8)",
+          "text-halo-width": 1,
+          "icon-opacity": 0.5,
+          "text-halo-blur": 1
+        },
+        "layout": {
+          "icon-image": "city",
+          "text-field": "{NAME}",
+          "text-offset": [
+            0,
+            1.1
+          ],
+          "text-size": {
+            "stops": [
+              [
+                4,
+                11
+              ],
+              [
+                22,
+                25
+              ]
+            ]
+          }
+        },
+        "minzoom": 4,
+        "maxzoom": 22,
+        "filter": [
+          "all",
+          [
+            "<=",
+            "SCALERANK",
+            9
+          ],
+          [
+            ">",
+            "SCALERANK",
+            8
+          ]
+        ]
+      },
+      {
+        "id": "world-cities-major",
+        "type": "symbol",
+        "source": "geobuffer",
+        "source-layer": "12016",
+        "paint": {
+          "text-color": "rgba(0, 0, 0, 0.7)",
+          "text-halo-color": "rgba(255, 255, 255, 0.8)",
+          "text-halo-width": 1,
+          "icon-opacity": 0.5,
+          "text-halo-blur": 1
+        },
+        "layout": {
+          "icon-image": "major_city",
+          "text-field": "{NAME}",
+          "text-offset": [
+            0,
+            1.2
+          ],
+          "text-size": {
+            "stops": [
+              [
+                4,
+                11
+              ],
+              [
+                22,
+                25
+              ]
+            ]
+          }
+        },
+        "minzoom": 4,
+        "maxzoom": 22,
+        "filter": [
+          "all",
+          [
+            ">",
+            "SCALERANK",
+            9
+          ]
+        ]
+      },
+      {
+        "id": "world-cities-capital",
+        "type": "symbol",
+        "source": "geobuffer",
+        "source-layer": "1038",
+        "paint": {
+          "text-color": "rgba(0, 0, 0, 1)",
+          "text-halo-color": "rgba(255, 255, 255, 0.8)",
+          "text-halo-width": 1,
+          "text-halo-blur": 1
+        },
+        "layout": {
+          "icon-image": "capital_city",
+          "text-field": "{CAPITAL}",
+          "text-offset": [
+            0,
+            1.4
+          ],
+          "text-size": {
+            "stops": [
+              [
+                3,
+                10
+              ],
+              [
+                12,
+                25
+              ]
+            ]
+          }
+        },
+        "minzoom": 3,
+        "maxzoom": 22
+      },
+      {
+        "id": "water-labels-5",
+        "type": "symbol",
+        "source": "geobuffer",
+        "source-layer": "10502",
+        "paint": {
+          "text-color": "rgba(0, 0, 150, 0.5)",
+          "text-halo-color": "rgba(255, 255, 255, 0.8)",
+          "text-halo-width": 1,
+          "text-halo-blur": 1
+        },
+        "layout": {
+          "text-field": "{Name}",
+          "text-max-width": 5,
+          "text-offset": [
+            0,
+            1.1
+          ],
+          "text-size": {
+            "stops": [
+              [
+                7,
+                11
+              ],
+              [
+                22,
+                25
+              ]
+            ]
+          }
+        },
+        "minzoom": 7,
+        "maxzoom": 22,
+        "filter": [
+          "==",
+          "ScaleRank",
+          5
+        ]
+      },
+      {
+        "id": "water-labels-4",
+        "type": "symbol",
+        "source": "geobuffer",
+        "source-layer": "10502",
+        "paint": {
+          "text-color": "rgba(0, 0, 150, 0.5)",
+          "text-halo-color": "rgba(255, 255, 255, 0.8)",
+          "text-halo-width": 1,
+          "text-halo-blur": 1
+        },
+        "layout": {
+          "text-field": "{Name}",
+          "text-max-width": 5,
+          "text-offset": [
+            0,
+            1.1
+          ],
+          "text-size": {
+            "stops": [
+              [
+                6,
+                11
+              ],
+              [
+                22,
+                25
+              ]
+            ]
+          }
+        },
+        "minzoom": 6,
+        "maxzoom": 22,
+        "filter": [
+          "==",
+          "ScaleRank",
+          4
+        ]
+      },
+      {
+        "id": "water-labels-3",
+        "type": "symbol",
+        "source": "geobuffer",
+        "source-layer": "10502",
+        "paint": {
+          "text-color": "rgba(0, 0, 150, 0.5)",
+          "text-halo-color": "rgba(255, 255, 255, 0.8)",
+          "text-halo-width": 1,
+          "text-halo-blur": 1
+        },
+        "layout": {
+          "text-field": "{Name}",
+          "text-max-width": 5,
+          "text-offset": [
+            0,
+            1.1
+          ],
+          "text-size": {
+            "stops": [
+              [
+                5,
+                11
+              ],
+              [
+                22,
+                25
+              ]
+            ]
+          }
+        },
+        "minzoom": 5,
+        "maxzoom": 22,
+        "filter": [
+          "==",
+          "ScaleRank",
+          3
+        ]
+      },
+      {
+        "id": "water-labels-2",
+        "type": "symbol",
+        "source": "geobuffer",
+        "source-layer": "10502",
+        "paint": {
+          "text-color": "rgba(0, 0, 150, 0.5)",
+          "text-halo-color": "rgba(255, 255, 255, 0.8)",
+          "text-halo-width": 1,
+          "text-halo-blur": 1
+        },
+        "layout": {
+          "text-field": "{Name}",
+          "text-max-width": 5,
+          "text-offset": [
+            0,
+            1.1
+          ],
+          "text-size": {
+            "stops": [
+              [
+                4,
+                11
+              ],
+              [
+                22,
+                25
+              ]
+            ]
+          }
+        },
+        "minzoom": 4,
+        "maxzoom": 22,
+        "filter": [
+          "==",
+          "ScaleRank",
+          2
+        ]
+      },
+      {
+        "id": "water-labels-1",
+        "type": "symbol",
+        "source": "geobuffer",
+        "source-layer": "10502",
+        "paint": {
+          "text-color": "rgba(0, 0, 150, 0.5)",
+          "text-halo-color": "rgba(255, 255, 255, 0.8)",
+          "text-halo-width": 1,
+          "text-halo-blur": 1
+        },
+        "layout": {
+          "text-field": "{Name}",
+          "text-max-width": 5,
+          "text-offset": [
+            0,
+            1.1
+          ],
+          "text-size": {
+            "stops": [
+              [
+                1,
+                11
+              ],
+              [
+                22,
+                25
+              ]
+            ]
+          }
+        },
+        "minzoom": 1,
+        "maxzoom": 22,
+        "filter": [
+          "==",
+          "ScaleRank",
+          1
+        ]
+      },
+      {
+        "id": "world-labels",
+        "type": "symbol",
+        "source": "geobuffer",
+        "source-layer": "14119p",
+        "paint": {
+          "text-color": "rgba(0, 0, 0, 0.7)",
+          "text-halo-color": "rgba(255, 255, 255, 0.7)",
+          "text-halo-width": 1,
+          "text-halo-blur": 1
+        },
+        "layout": {
+          "text-field": "{Geo_QName}",
+          "text-max-width": 5,
+          "text-size": {
+            "stops": [
+              [
+                3,
+                13
+              ],
+              [
+                7,
+                19
+              ]
+            ]
+          }
+        },
+        "minzoom": 2,
+        "maxzoom": 10,
+        "filter": [
+          "!=",
+          "FIPS",
+          "72"
+        ]
+      },
+      {
+        "id": "world-labels-abbreviations",
+        "type": "symbol",
+        "source": "geobuffer",
+        "source-layer": "14119p",
+        "paint": {
+          "text-color": "rgba(0, 0, 0, 0.7)",
+          "text-halo-color": "rgba(255, 255, 255, 0.8)",
+          "text-halo-width": 1,
+          "text-halo-blur": 1
+        },
+        "layout": {
+          "text-field": "{Geo_FIPS}",
+          "text-max-width": 5,
+          "text-size": {
+            "stops": [
+              [
+                0,
+                9
+              ],
+              [
+                4,
+                14
+              ]
+            ]
+          }
+        },
+        "minzoom": 0,
+        "maxzoom": 2,
+        "filter": [
+          "!=",
+          "FIPS",
+          "72"
+        ]
+      },
+      {
+        "id": "geosearch-points",
+        "type": "symbol",
+        "source": "geosearch-points",
+        "layout": {
+          "icon-image": "searchmarker"
+        }
+      }
+    ]
+  }
+}

@@ -2083,6 +2083,14 @@ body {
 .fadded {
   opacity: 0.4;
 }
+.hidden {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
 .horizontal-component-legend {
   display: -webkit-box;
   display: -webkit-flex;
