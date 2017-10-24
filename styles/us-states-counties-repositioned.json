@@ -52,8 +52,8 @@
       "mapspice:variables": {}
     },
     "version": 8,
-    "sprite": "sprite/sprite",
-    "glyphs": "font/arial-regular/0-65535.pbf",
+    "sprite": "https://mapspice.mtb.ba/examples/sprite/sprite",
+    "glyphs": "https://mapspice.mtb.ba/examples/font/arial-regular/0-65535.pbf",
     "transition": {
       "duration": 600
     },

@@ -14,19 +14,22 @@
 </head>
 <body>
   <div id="app"></div>
+</body>
 <script type="text/babel">
   const layout = {
     zoomControl: {
-      position: "header left"
+      position: "mapfooter right"
     },
     locateControl: {
-      show: false
+      show: true
     }
   };
 
   function onMapInitialized(map) { 
-    console.log('mapa se loadala');
-    map.fitBounds([[10, 41],[25,47]]);
+    console.log('The map is loaded');
+    setTimeout(function() {
+      map.fitBounds([[10, 41],[25,47]]);
+    }, 1000);
   }
 
   ReactDOM.render(
@@ -39,5 +42,4 @@
     document.getElementById('app')
   );
 </script>
-</body>
 </html>
