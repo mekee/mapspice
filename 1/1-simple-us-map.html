@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
-    <title>MapSpice UI react</title>
+    <title>My first MapSpice map</title>
     <link href="//cdn.muicss.com/mui-0.9.23/css/mui.min.css" rel="stylesheet" type="text/css" />
     <script src="//unpkg.com/react@16/umd/react.development.js"></script>
     <script src="//unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
     <script src="//unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
     <script src="js/mapspice-ui-react.js"></script>
     <link rel="stylesheet" href="css/mapspice-ui-react.css">
-    <link rel="stylesheet" href="css/overrides.css">
 </head>
 <body>
   <div id="app"></div>
@@ -20,21 +19,18 @@
     zoomControl: {
       position: "header left"
     },
-    locateControl: {
-      show: false
-    }
   };
 
   function onMapInitialized(map) { 
-    console.log('mapa se loadala');
+    console.log('The map is loaded. Hooray!!!');
   }
 
   ReactDOM.render(
-    <MapSpice.MapSingle
-      mapDefinition="us-states-counties-repositioned"
-      onInitialized={onMapInitialized}
-      layout={layout}
-      className="map"
+    <MapSpice.MapSingle // React component
+      mapDefinition="us-states-counties-repositioned" // Map style id
+      onInitialized={onMapInitialized} // Callback function on map loaded
+      layout={layout} // Application layout definition
+      className="map" // ID of map container
     />,
     document.getElementById('app')
   );

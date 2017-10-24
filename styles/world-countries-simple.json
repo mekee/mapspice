@@ -14,7 +14,7 @@
       80
     ]
   ],
-  "maxZoom": 1,
+  "maxZoom": 10,
   "style": {
     "metadata": {
       "mapspice:use-seamless-variable-transitions": true,
